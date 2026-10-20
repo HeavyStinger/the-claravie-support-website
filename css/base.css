@@ -85,7 +85,7 @@ h3 { font-size: 19px; line-height: 1.25; letter-spacing: 0.08em; }
 	transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
-.site-header.is-scrolled { background: rgba(245, 240, 232, 0.94); border-bottom-color: var(--rule); }
+.site-header.is-scrolled { background: var(--surface); border-bottom-color: var(--rule); }
 .site-header.menu-open { border-bottom-color: transparent; }
 
 .site-header__bar {
