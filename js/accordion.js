@@ -45,7 +45,8 @@
 			if (el.open && !el.classList.contains("is-closing")) {
 				close(el);
 			} else {
-				items.forEach(function (other) { if (other !== el) close(other); });
+				var group = el.closest(".accordion");
+				items.forEach(function (other) { if (other !== el && other.closest(".accordion") === group) close(other); });
 				open(el);
 			}
 		});

@@ -1,0 +1,36 @@
+.page-hero {
+	padding: calc(var(--header-h) + clamp(40px, 7vw, 88px)) 0 clamp(40px, 6vw, 72px);
+	background: linear-gradient(160deg, #F5F0E8 0%, #E8E5D5 55%, #D9E2D8 100%);
+}
+.page-hero h1 { max-width: 20ch; font-size: clamp(32px, 5.6vw, 58px); letter-spacing: 0.025em; }
+.page-hero__lead { margin-top: 20px; max-width: 48ch; font-size: clamp(16px, 1.2vw + 12px, 20px); line-height: 1.55; color: var(--text-soft); }
+
+.start { padding-block: clamp(36px, 5vw, 64px); }
+.start h2 { font-size: clamp(22px, 2.6vw, 30px); letter-spacing: 0.04em; margin-bottom: 20px; }
+.start__list { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.start__list a {
+	display: flex; justify-content: space-between; align-items: center; gap: 16px;
+	padding: 18px 20px; background: #fff; border-radius: 5px; text-decoration: none; color: var(--ink);
+	font: 500 17px/1.25 var(--font-display); letter-spacing: 0.08em; text-transform: uppercase;
+	transition: transform 0.15s ease;
+}
+.start__list a::after { content: ""; flex: none; width: 10px; height: 10px; border-top: 2px solid currentColor; border-right: 2px solid currentColor; transform: rotate(45deg); }
+.start__list a:hover { transform: translateY(-2px); }
+
+.family { padding-block: clamp(36px, 5vw, 64px); border-top: 1px solid var(--rule); }
+.family__grid { display: grid; gap: 24px; }
+.family__head { display: grid; gap: 22px; align-content: start; justify-items: start; }
+.family__head h2 { font-size: clamp(24px, 3vw, 34px); letter-spacing: 0.03em; max-width: 18ch; }
+.family__list { list-style: none; margin: 0; padding: 0; background: #fff; border-radius: 5px; overflow: hidden; }
+.family__list li { padding: 16px 20px; border-bottom: 1px solid #d6d6d6; font-size: 16.5px; line-height: 1.5; }
+.family__list li:last-child { border-bottom: 0; }
+
+@media (min-width: 768px) {
+	.start__list { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+}
+@media (min-width: 900px) {
+	.family__grid { grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: 64px; align-items: start; }
+}
+@media (prefers-reduced-motion: reduce) {
+	.start__list a { transition: none; }
+}

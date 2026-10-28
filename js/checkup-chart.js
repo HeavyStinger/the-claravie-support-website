@@ -64,17 +64,20 @@
 
 					var textY = bar.y - bar.height / 2 - (small ? 15 : 17);
 
-					ctx.textBaseline = "middle";
+					ctx.textBaseline = "alphabetic";
 					ctx.textAlign = "left";
 					ctx.font = "500 " + (small ? 13 : 15) + "px " + display;
 					ctx.letterSpacing = "1px";
 					ctx.fillStyle = "#244F52";
-					ctx.fillText(a.name.toUpperCase(), left, textY);
+					var nameText = a.name.toUpperCase();
+					var nm = ctx.measureText(nameText);
+					ctx.fillText(nameText, left, textY + (nm.actualBoundingBoxAscent - nm.actualBoundingBoxDescent) / 2);
 
 					ctx.font = "500 " + (small ? 11 : 12) + "px " + display;
 					ctx.letterSpacing = "1.2px";
 					var label = a.tier.text.toUpperCase();
-					var tw = ctx.measureText(label).width;
+					var lm = ctx.measureText(label);
+					var tw = lm.width;
 					var padX = small ? 10 : 12;
 					var h = small ? 22 : 26;
 					var cw = tw + padX * 2;
@@ -84,7 +87,7 @@
 					ctx.fill();
 					ctx.fillStyle = a.tier.chipText;
 					ctx.textAlign = "left";
-					ctx.fillText(label, right - cw + padX, textY + 0.5);
+					ctx.fillText(label, right - cw + padX, textY + (lm.actualBoundingBoxAscent - lm.actualBoundingBoxDescent) / 2);
 				});
 				ctx.restore();
 			}

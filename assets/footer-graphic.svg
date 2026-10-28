@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="230" viewBox="0 0 240 230">
+	<defs>
+		<marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+			<path d="M2 1L8 5L2 9" fill="none" stroke="#F5F0E8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+		</marker>
+	</defs>
+
+	<circle cx="120" cy="62" r="36" fill="#2B5E61" stroke="#F5F0E8" stroke-width="3"/>
+	<circle cx="120" cy="62" r="28" fill="none" stroke="#F5F0E8" stroke-width="1" opacity=".5"/>
+	<line x1="120" y1="26" x2="120" y2="32" stroke="#F5F0E8" stroke-width="2"/>
+	<line x1="120" y1="92" x2="120" y2="98" stroke="#F5F0E8" stroke-width="2"/>
+	<line x1="84" y1="62" x2="90" y2="62" stroke="#F5F0E8" stroke-width="2"/>
+	<line x1="150" y1="62" x2="156" y2="62" stroke="#F5F0E8" stroke-width="2"/>
+	<g transform="rotate(40 120 62)">
+		<polygon points="120,38 128,62 112,62" fill="#A9CBC5"/>
+		<polygon points="120,86 128,62 112,62" fill="#2B5E61" stroke="#F5F0E8" stroke-width="1"/>
+	</g>
+	<circle cx="120" cy="62" r="3" fill="#A9CBC5"/>
+
+	<line x1="120" y1="102" x2="120" y2="168" stroke="#F5F0E8" stroke-width="1.5" stroke-dasharray="2 4" stroke-linecap="round"/>
+
+	<g transform="rotate(-10 40 146)">
+		<rect x="22" y="122" width="34" height="48" fill="#2B5E61" stroke="#F5F0E8" stroke-width="1"/>
+		<line x1="27" y1="132" x2="51" y2="132" stroke="#F5F0E8" opacity=".5"/>
+		<line x1="27" y1="140" x2="46" y2="140" stroke="#F5F0E8" opacity=".5"/>
+		<line x1="27" y1="148" x2="51" y2="148" stroke="#F5F0E8" opacity=".5"/>
+	</g>
+	<g transform="rotate(12 69 173)">
+		<rect x="54" y="158" width="30" height="30" fill="#34696C" stroke="#F5F0E8" stroke-width="1"/>
+		<line x1="59" y1="168" x2="79" y2="168" stroke="#F5F0E8" opacity=".5"/>
+		<line x1="59" y1="175" x2="72" y2="175" stroke="#F5F0E8" opacity=".5"/>
+	</g>
+	<g transform="rotate(-4 29 197)">
+		<rect x="18" y="178" width="22" height="38" rx="4" fill="#A9CBC5"/>
+		<rect x="21" y="183" width="16" height="26" rx="2" fill="#244F52"/>
+		<rect x="23" y="188" width="10" height="5" rx="2" fill="#2B5E61"/>
+	</g>
+
+	<line x1="96" y1="176" x2="140" y2="176" stroke="#F5F0E8" stroke-width="1.5" marker-end="url(#ar)"/>
+
+	<rect x="148" y="128" width="70" height="86" rx="8" fill="#2B5E61" stroke="#F5F0E8" stroke-width="1.5"/>
+	<rect x="168" y="122" width="30" height="10" rx="3" fill="#A9CBC5"/>
+	<rect x="158" y="146" width="10" height="10" rx="2" fill="none" stroke="#F5F0E8" stroke-width="1.5"/>
+	<path d="M160 151l3 3l5-6" fill="none" stroke="#F5F0E8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+	<line x1="174" y1="151" x2="208" y2="151" stroke="#F5F0E8" stroke-width="2" opacity=".6"/>
+	<rect x="158" y="167" width="10" height="10" rx="2" fill="none" stroke="#F5F0E8" stroke-width="1.5"/>
+	<path d="M160 172l3 3l5-6" fill="none" stroke="#F5F0E8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+	<line x1="174" y1="172" x2="208" y2="172" stroke="#F5F0E8" stroke-width="2" opacity=".6"/>
+	<rect x="158" y="188" width="10" height="10" rx="2" fill="none" stroke="#F5F0E8" stroke-width="1.5"/>
+	<path d="M160 193l3 3l5-6" fill="none" stroke="#F5F0E8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+	<line x1="174" y1="193" x2="200" y2="193" stroke="#F5F0E8" stroke-width="2" opacity=".6"/>
+</svg>

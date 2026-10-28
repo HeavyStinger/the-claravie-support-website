@@ -4,7 +4,7 @@
 	--step-1: calc(var(--step-0) * var(--phi));
 	--step-2: calc(var(--step-1) * var(--phi));
 	--hero-gap: 84px;
-	--hero-line: rgba(36, 79, 82, 0.05);
+	--hero-line: rgba(36, 79, 82, 0.03);
 	padding-block: calc(var(--header-h) + clamp(32px, 6vw, 72px)) 0;
 	background:
 		repeating-linear-gradient(to bottom right,
@@ -189,13 +189,12 @@
 }
 .accordion__item summary::-webkit-details-marker { display: none; }
 .accordion__item summary::after {
-	content: ""; flex: none; margin-left: auto; width: 14px; height: 14px;
-	background:
-		linear-gradient(#000, #000) center / 100% 2px no-repeat,
-		linear-gradient(#000, #000) center / 2px 100% no-repeat;
-	transition: transform 0.2s ease;
+	content: ""; flex: none; margin-left: auto; margin-right: 4px; width: 9px; height: 9px;
+	border-right: 2px solid #000; border-bottom: 2px solid #000;
+	transform: rotate(45deg); translate: 0 -3px;
+	transition: transform 0.25s ease, translate 0.25s ease;
 }
-.accordion__item[open]:not(.is-closing) summary::after { background: linear-gradient(#000, #000) center / 100% 2px no-repeat; }
+.accordion__item[open]:not(.is-closing) summary::after { transform: rotate(-135deg); translate: 0 3px; }
 .accordion__icon { flex: none; width: 28px; height: 28px; fill: none; stroke: #000; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
 .accordion__title { font: 500 17px/1.25 var(--font-display); letter-spacing: 0.08em; text-transform: uppercase; color: #000; }
 .accordion__body { padding: 0 20px 20px 62px; color: var(--text); font-size: 15.5px; line-height: 1.6; }
@@ -296,3 +295,6 @@
 @media (min-width: 640px) {
 	.decor--b3, .decor--b6, .decor--b7, .decor--b9, .decor--a2, .decor--a3 { display: block; }
 }
+
+.faq__intro { margin-bottom: 28px; }
+.accordion--faq .accordion__body { padding-left: 20px; max-width: 70ch; }
