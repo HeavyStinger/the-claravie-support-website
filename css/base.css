@@ -193,10 +193,17 @@ h3 { font-size: 19px; line-height: 1.25; letter-spacing: 0.08em; }
 	font-size: 14px;
 }
 .site-footer__base ul { display: flex; gap: 8px 24px; flex-wrap: wrap; }
+.site-footer__base p a { text-decoration: underline; }
+.site-footer__credit { order: 3; flex-basis: 100%; text-align: center; }
+.site-footer .logo { gap: 12px; font-size: 20px; letter-spacing: 0.06em; }
+.site-footer .logo img { height: 56px; }
 @media (min-width: 768px) {
 	.footer-cta { display: flex; justify-content: space-between; align-items: center; gap: 56px; padding: 44px 56px; }
 	.footer-cta__art { display: block; width: 220px; height: auto; }
 	.site-footer__grid { grid-template-columns: 1.5fr 1fr 1fr 1.5fr; gap: 48px; }
+	.site-footer__credit { order: 0; flex-basis: auto; text-align: left; }
+	.site-footer .logo { gap: 10px; font-size: 16px; letter-spacing: 0.07em; }
+	.site-footer .logo img { height: 52px; }
 }
 
 body.has-sticky-bar { padding-bottom: calc(76px + env(safe-area-inset-bottom, 0px)); }
