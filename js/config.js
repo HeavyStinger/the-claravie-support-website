@@ -3,5 +3,7 @@ window.TCS_CONFIG = {
 	whatsappMessage: "Hello, I found The Claravie Support online and would like to talk.",
 
 	bookingUrl: "",
-	contactUrl: "contact.html"
+	contactUrl: "contact.html",
+
+	formEndpoint: ""
 };

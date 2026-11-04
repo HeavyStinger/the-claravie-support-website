@@ -1,0 +1,111 @@
+.contact__grid { display: grid; gap: 36px; grid-template-areas: "intro" "form" "map"; }
+.contact__intro { grid-area: intro; display: grid; gap: 24px; align-content: start; }
+.contact__intro h2 { max-width: 14ch; }
+.contact__form { grid-area: form; }
+.contact__map { grid-area: map; }
+
+.contact__list { list-style: none; margin: 0; padding: 0; display: grid; gap: 22px; }
+.contact__list li { display: flex; align-items: flex-start; gap: 16px; }
+.contact__icon { flex: none; width: 26px; height: 26px; margin-top: 2px; fill: none; stroke: var(--ink); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.contact__list h3 { font: 500 17px/1.3 var(--font-display); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink); margin-bottom: 2px; }
+.contact__list p { font-size: 16px; line-height: 1.5; color: var(--text-soft); }
+.contact__list a { color: inherit; text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
+.contact__list a:hover { color: var(--ink); text-decoration-thickness: 2px; }
+
+.contact__map { position: relative; aspect-ratio: 16 / 10; border-radius: 5px; overflow: hidden; background: var(--sage-tint); box-shadow: 0 6px 20px rgba(36, 79, 82, 0.1); }
+.contact__map iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+.cform, .cform__done {
+	position: relative; overflow: hidden; padding: clamp(20px, 4vw, 36px); border-radius: 5px; color: var(--cream);
+	background:
+		radial-gradient(ellipse 90% 42% at 10% 0%, rgba(111, 179, 176, 0.42) 0%, rgba(111, 179, 176, 0) 100%),
+		radial-gradient(ellipse 75% 36% at 100% 100%, rgba(63, 119, 122, 0.55) 0%, rgba(63, 119, 122, 0) 100%),
+		radial-gradient(rgba(245, 240, 232, 0.07) 1px, rgba(245, 240, 232, 0) 1.6px) 0 0 / 22px 22px,
+		linear-gradient(160deg, #1F4548 0%, #153235 100%);
+	box-shadow: inset 0 1px 0 rgba(245, 240, 232, 0.22), 0 18px 40px rgba(14, 38, 40, 0.3);
+}
+.cform::before, .cform__done::before {
+	content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+	background: radial-gradient(rgba(245, 240, 232, 0.6) 1px, rgba(245, 240, 232, 0) 1.6px) 0 0 / 22px 22px;
+	-webkit-mask-image: radial-gradient(circle 150px at var(--mx, -999px) var(--my, -999px), #000 0%, rgba(0, 0, 0, 0) 100%);
+	mask-image: radial-gradient(circle 150px at var(--mx, -999px) var(--my, -999px), #000 0%, rgba(0, 0, 0, 0) 100%);
+}
+.cform::after, .cform__done::after {
+	content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+	background: radial-gradient(circle 260px at var(--mx, -999px) var(--my, -999px), rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0) 100%);
+}
+.cform > *, .cform__done > * { position: relative; z-index: 1; }
+.cform { display: grid; gap: 22px; }
+.cform[hidden] { display: none; }
+.cform__fields { margin: 0; padding: 0; border: 0; min-width: 0; display: grid; gap: 20px; }
+.cform__fields:disabled { cursor: progress; }
+.cform .cv-field > label { display: inline-flex; align-items: baseline; gap: 8px; font: 500 13px/1.3 var(--font-display); letter-spacing: 0.13em; text-transform: uppercase; color: var(--cream); }
+.cform .cv-field.is-error > label { color: #FFC9BB; }
+.cform .cv-opt { font-size: 12px; color: rgba(245, 240, 232, 0.7); }
+.cform .cv-input { background: rgba(245, 240, 232, 0.07); border-color: rgba(245, 240, 232, 0.35); color: var(--cream); }
+.cform .cv-field:hover .cv-input { border-color: var(--cream); }
+.cform .cv-input:focus { border-color: var(--cream); box-shadow: 0 0 0 4px rgba(245, 240, 232, 0.18); }
+.cform .cv-input:disabled { background: rgba(245, 240, 232, 0.04); opacity: 0.55; }
+.cform .cv-select::after { border-color: var(--cream); }
+.cform .cv-field.is-error .cv-input, .cv-field.is-error .cform__phone .cv-input { border-color: #FFC9BB; }
+.cform .cv-field.is-error .cv-input:focus { box-shadow: 0 0 0 4px rgba(255, 201, 187, 0.25); }
+.cform .cv-hint--err { color: #FFC9BB; }
+.cform .cv-hint--err::before { background: #FFC9BB; color: #5A1F12; }
+.cform textarea.cv-input { min-height: 140px; }
+
+.cform__phone { display: grid; grid-template-columns: minmax(0, 11.5rem) minmax(0, 1fr); gap: 10px; }
+.cform__phone .cv-select .cv-input { padding-inline: 14px 38px; text-overflow: ellipsis; white-space: nowrap; overflow: hidden; }
+.cform .cv-hint--err[hidden] { display: none; }
+
+.cform__trap { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+.cform__alert { padding: 12px 16px; border-radius: 5px; background: rgba(255, 201, 187, 0.12); border: 1.5px solid #FFC9BB; color: #FFC9BB; font-size: 15px; line-height: 1.5; font-weight: 600; }
+.cform__alert[hidden] { display: none; }
+
+.cform__actions { display: flex; }
+.cform__send { display: inline-flex; align-items: center; justify-content: center; gap: 12px; width: 100%; min-height: 48px; }
+.cform__plane { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: transform 0.2s ease; }
+.cform__send:hover .cform__plane { transform: translate(3px, -3px); }
+.cform__send.is-loading { pointer-events: none; }
+.cform__send.is-loading .cform__plane { display: none; }
+.cform__send.is-loading::after {
+	content: ""; width: 18px; height: 18px; border-radius: 50%; border: 2px solid rgba(36, 79, 82, 0.25); border-top-color: var(--teal);
+	animation: cform-spin 0.7s linear infinite;
+}
+
+.cform__done { display: grid; justify-items: start; gap: 14px; }
+.cform__done[hidden] { display: none; }
+.cform__done:focus { outline: none; }
+.cform__done h3 { font-size: clamp(24px, 3vw, 32px); letter-spacing: 0.03em; }
+.cform__done h3 { color: var(--cream); }
+.cform__done p { font-size: 17px; line-height: 1.5; color: rgba(245, 240, 232, 0.75); }
+.cform__check { width: 56px; height: 56px; fill: none; stroke: #6FB3B0; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.cform__check circle { stroke-dasharray: 145; stroke-dashoffset: 145; }
+.cform__check path { stroke-dasharray: 44; stroke-dashoffset: 44; }
+.cform__done.is-shown .cform__check circle { animation: cform-draw 0.6s ease forwards; }
+.cform__done.is-shown .cform__check path { animation: cform-draw 0.4s ease 0.45s forwards; }
+
+@keyframes cform-spin { to { transform: rotate(360deg); } }
+@keyframes cform-draw { to { stroke-dashoffset: 0; } }
+
+@media (max-width: 420px) {
+	.cform__phone { grid-template-columns: minmax(0, 1fr); }
+}
+@media (min-width: 640px) {
+	.cform__send { width: auto; min-width: 150px; margin-left: auto; }
+	.cform__actions { justify-content: flex-end; }
+}
+@media (min-width: 960px) {
+	.contact__grid {
+		grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); column-gap: 72px; row-gap: 32px; align-items: start;
+		grid-template-areas: "intro form" "map form";
+		grid-template-rows: auto 1fr;
+	}
+	.contact__form { align-self: center; }
+	.contact__map { aspect-ratio: auto; min-height: 280px; height: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+	.cform__plane { transition: none; }
+	.cform__send.is-loading::after { animation-duration: 1.6s; }
+	.cform__done.is-shown .cform__check circle, .cform__done.is-shown .cform__check path { animation: none; stroke-dashoffset: 0; }
+}

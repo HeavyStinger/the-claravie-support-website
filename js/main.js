@@ -65,6 +65,37 @@
 		window.addEventListener("load", buildLogos);
 	}
 
+	var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+	window.tcsGlow = function (el) {
+		var glow = { x: -999, y: -999, tx: -999, ty: -999, raf: 0 };
+
+		function tick() {
+			glow.x += (glow.tx - glow.x) * 0.22;
+			glow.y += (glow.ty - glow.y) * 0.22;
+			el.style.setProperty("--mx", glow.x + "px");
+			el.style.setProperty("--my", glow.y + "px");
+			if (Math.abs(glow.tx - glow.x) > 0.5 || Math.abs(glow.ty - glow.y) > 0.5) glow.raf = requestAnimationFrame(tick);
+			else glow.raf = 0;
+		}
+
+		function moveTo(x, y, snap) {
+			glow.tx = x;
+			glow.ty = y;
+			if (snap || reduceMotion.matches) {
+				glow.x = x;
+				glow.y = y;
+			}
+			if (!glow.raf) glow.raf = requestAnimationFrame(tick);
+		}
+
+		el.addEventListener("pointermove", function (e) {
+			var box = el.getBoundingClientRect();
+			moveTo(e.clientX - box.left, e.clientY - box.top, glow.tx === -999);
+		});
+		el.addEventListener("pointerleave", function () { moveTo(-999, -999, true); });
+	};
+	document.querySelectorAll(".footer-cta").forEach(window.tcsGlow);
+
 	var toggle = document.querySelector(".nav-toggle");
 	var nav = document.getElementById("site-nav");
 	if (toggle && nav) {

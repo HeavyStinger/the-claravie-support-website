@@ -169,9 +169,21 @@ h3 { font-size: 19px; line-height: 1.25; letter-spacing: 0.08em; }
 .footer-top { position: relative; z-index: 1; margin-top: clamp(48px, 7vw, 96px); background: linear-gradient(to bottom, transparent 50%, var(--cream-edge-dark) 50%); }
 .footer-main { background: var(--cream-edge-dark); padding-block: 0 28px; }
 .footer-cta {
-	display: grid; gap: 20px;
-	padding: 36px 24px; background: var(--teal); color: var(--cream); border-radius: 14px;
+	position: relative; overflow: hidden; display: grid; gap: 20px;
+	padding: 36px 24px; color: var(--cream); border-radius: 14px;
+	background: radial-gradient(rgba(245, 240, 232, 0.07) 1px, rgba(245, 240, 232, 0) 1.6px) 0 0 / 22px 22px, var(--teal);
 }
+.footer-cta::before {
+	content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+	background: radial-gradient(rgba(245, 240, 232, 0.6) 1px, rgba(245, 240, 232, 0) 1.6px) 0 0 / 22px 22px;
+	-webkit-mask-image: radial-gradient(circle 150px at var(--mx, -999px) var(--my, -999px), #000 0%, rgba(0, 0, 0, 0) 100%);
+	mask-image: radial-gradient(circle 150px at var(--mx, -999px) var(--my, -999px), #000 0%, rgba(0, 0, 0, 0) 100%);
+}
+.footer-cta::after {
+	content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+	background: radial-gradient(circle 260px at var(--mx, -999px) var(--my, -999px), rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0) 100%);
+}
+.footer-cta > * { position: relative; z-index: 1; }
 .footer-cta__art { display: none; }
 .footer-cta__copy { display: grid; gap: 12px; justify-items: start; }
 .site-footer .footer-cta h2 { margin: 0; font-size: clamp(26px, 3.4vw, 38px); letter-spacing: 0.025em; color: var(--cream); }

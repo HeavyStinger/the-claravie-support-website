@@ -1,4 +1,4 @@
-.quiz { padding-top: clamp(24px, 4vw, 48px); }
+.quiz { padding-block: clamp(48px, 7vw, 96px) 0; }
 .quiz__title { max-width: 760px; margin: 0 auto 20px; font-size: clamp(24px, 3vw, 34px); letter-spacing: 0.03em; }
 .quiz__panel {
 	position: relative; max-width: 760px; margin-inline: auto; padding: clamp(20px, 4vw, 40px); border-radius: 5px; overflow: hidden;

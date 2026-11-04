@@ -363,33 +363,7 @@
 
 	results.querySelector("[data-restart]").addEventListener("click", restart);
 
-	var glow = { x: -999, y: -999, tx: -999, ty: -999, raf: 0 };
-
-	function glowTick() {
-		glow.x += (glow.tx - glow.x) * 0.22;
-		glow.y += (glow.ty - glow.y) * 0.22;
-		form.style.setProperty("--mx", glow.x + "px");
-		form.style.setProperty("--my", glow.y + "px");
-		if (Math.abs(glow.tx - glow.x) > 0.5 || Math.abs(glow.ty - glow.y) > 0.5) glow.raf = requestAnimationFrame(glowTick);
-		else glow.raf = 0;
-	}
-
-	function glowTo(x, y, snap) {
-		glow.tx = x;
-		glow.ty = y;
-		if (snap || reduce.matches) {
-			glow.x = x;
-			glow.y = y;
-		}
-		if (!glow.raf) glow.raf = requestAnimationFrame(glowTick);
-	}
-
-	form.addEventListener("pointermove", function (e) {
-		var box = form.getBoundingClientRect();
-		var first = glow.tx === -999;
-		glowTo(e.clientX - box.left, e.clientY - box.top, first);
-	});
-	form.addEventListener("pointerleave", function () { glowTo(-999, -999, true); });
+	if (window.tcsGlow) window.tcsGlow(form);
 
 	if (window.tcsTrack) window.tcsTrack("checkup_start");
 	render();
