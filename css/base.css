@@ -163,6 +163,7 @@ h3 { font-size: 19px; line-height: 1.25; letter-spacing: 0.08em; }
 	.site-nav li:not(.nav-cta) { border-bottom: 0; }
 	.site-nav a:not(.cv-btn) { padding: 8px 0; border: 0; font-size: 14px; border-bottom: 2px solid transparent; }
 	.site-nav a:not(.cv-btn):hover { border-bottom-color: currentColor; }
+	.site-nav a[aria-current="page"]:not(.cv-btn) { text-decoration: none; border-bottom-color: currentColor; }
 }
 
 .site-footer { position: relative; color: var(--text); }
