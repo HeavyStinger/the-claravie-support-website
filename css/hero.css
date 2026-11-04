@@ -1,0 +1,53 @@
+.hero {
+	--phi: 1.618;
+	--step-0: clamp(15px, 11px + 1.2vw, 16.5px);
+	--step-1: calc(var(--step-0) * var(--phi));
+	--step-2: calc(var(--step-1) * var(--phi));
+	--hero-gap: 84px;
+	--hero-line: rgba(36, 79, 82, 0.03);
+	padding-block: calc(var(--header-h) + clamp(32px, 6vw, 72px)) 0;
+	background:
+		repeating-linear-gradient(to bottom right,
+			transparent calc(50% - var(--hero-gap) / 2),
+			transparent calc(50% - 0.75px),
+			var(--hero-line) calc(50% - 0.75px),
+			var(--hero-line) calc(50% + 0.75px),
+			transparent calc(50% + 0.75px),
+			transparent calc(50% + var(--hero-gap) / 2)),
+		repeating-linear-gradient(to bottom left,
+			transparent calc(50% - var(--hero-gap) / 2),
+			transparent calc(50% - 0.75px),
+			var(--hero-line) calc(50% - 0.75px),
+			var(--hero-line) calc(50% + 0.75px),
+			transparent calc(50% + 0.75px),
+			transparent calc(50% + var(--hero-gap) / 2)),
+		radial-gradient(ellipse at 18% 12%, #FFFCF6 0%, rgba(255, 252, 246, 0) 60%),
+		linear-gradient(160deg, #F5F0E8 0%, #E8E5D5 50%, #CFDDD3 100%);
+}
+
+.hero__grid { display: grid; gap: 40px; align-items: center; }
+.hero__copy { display: grid; gap: 22px; justify-items: start; }
+.hero__copy .decision { margin-top: 36px; width: 100%; }
+
+.hero__eyebrow { margin-bottom: -14px; font: 500 var(--step-0)/1.2 var(--font-display); letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink); }
+.hero h1 { font-size: calc(var(--step-2) * 1.15); }
+.hero h1 em { font-style: normal; }
+.hero__sub { color: var(--text-soft); font-size: var(--step-0); line-height: 1.5; max-width: 52ch; }
+
+.hero__art { display: none; }
+@media (min-width: 900px) {
+	.hero__grid { grid-template-columns: 1.3fr 0.7fr; gap: 20px; }
+	.hero__art { display: block; justify-self: end; width: 100%; max-width: 440px; }
+	.hero__art img { display: block; width: 100%; height: auto; }
+}
+
+.hero { display: flex; flex-direction: column; }
+.hero > .container { width: 100%; }
+.hero__grid { margin-block: auto; }
+@media (min-width: 900px) {
+	.hero { min-height: min(100vh, 920px); min-height: min(100svh, 920px); }
+}
+
+.hero--page { min-height: 0; padding-bottom: clamp(48px, 8vw, 96px); }
+.hero--page h1 { max-width: 20ch; }
+.hero--page .hero__grid { grid-template-columns: 1fr; }

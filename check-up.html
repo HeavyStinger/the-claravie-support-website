@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Business Clarity Check | The Claravie Support</title>
+<meta name="description" content="Take a short check-up to spot areas of your business worth reviewing. It is a starting point for reflection, not a formal compliance assessment or audit.">
+<meta name="theme-color" content="#F5F0E8">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Business Clarity Check | The Claravie Support">
+<meta property="og:description" content="Take a short check-up to spot areas of your business worth reviewing. It is a starting point for reflection, not a formal compliance assessment or audit.">
+<link rel="icon" href="assets/logo.webp" type="image/webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,600;1,400&family=Oswald:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/hero.css">
+<link rel="stylesheet" href="css/quiz.css">
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+	<symbol id="person" viewBox="0 0 100 100">
+		<rect width="100" height="100" fill="#A9CBC5"/>
+		<circle cx="50" cy="38" r="17" fill="#F5F0E8"/>
+		<path d="M14 100c0-22 16-36 36-36s36 14 36 36z" fill="#F5F0E8"/>
+	</symbol>
+</svg>
+
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="site-header">
+	<div class="container">
+		<div class="site-header__bar">
+			<a class="logo" href="index.html" aria-label="The Claravie Support, home">
+				<img src="assets/logo.webp" width="162" height="192" alt="">
+				<span>The Claravie Support</span>
+			</a>
+			<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+				<span class="nav-toggle__bars" aria-hidden="true"></span>
+			</button>
+			<nav class="site-nav" id="site-nav" aria-label="Main">
+				<ul>
+					<li><a href="packages.html">Packages</a></li>
+					<li><a href="about.html">About</a></li>
+					<li><a href="contact.html">Contact</a></li>
+					<li class="nav-cta"><a class="cv-btn cv-btn--sm" href="check-up.html" data-track="checkup_header_click">My Free Check-Up</a></li>
+				</ul>
+			</nav>
+			<a class="cv-btn cv-btn--sm site-cta" href="check-up.html" data-track="checkup_header_click">My Free Check-Up</a>
+		</div>
+	</div>
+</header>
+
+<main id="main">
+
+	<section class="hero hero--page" aria-labelledby="hero-title">
+		<div class="container hero__grid">
+			<div class="hero__copy">
+				<h1 id="hero-title">How organized is your business behind the scenes?</h1>
+				<p class="hero__sub">Take a short check-up to spot areas worth reviewing. It is a starting point for reflection, not a formal compliance assessment or audit.</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="section quiz" aria-labelledby="quiz-title">
+		<div class="container">
+			<h2 class="quiz__title" id="quiz-title">Start your check-up</h2>
+			<form class="quiz__panel" id="quiz" novalidate>
+				<div class="quiz__top">
+					<div class="quiz__bar" role="progressbar" aria-label="Check-up progress" aria-valuemin="0" aria-valuemax="8" aria-valuenow="0"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+					<div class="quiz__meta">
+						<p class="quiz__count" aria-live="polite">Question <span data-current>1</span> of 8</p>
+						<p class="quiz__percent" aria-hidden="true" hidden>
+							<span class="quiz__pct-now"><span data-pct-now>0</span>%</span>
+							<span class="quiz__pct-next"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg><span><span data-pct-next>13</span>%</span></span>
+						</p>
+					</div>
+				</div>
+				<div class="quiz__stage">
+					<fieldset class="quiz__step" data-label="Income and expense records">
+						<legend tabindex="-1">Do you keep business income and expense records up to date?</legend>
+						<div class="quiz__options">
+							<input type="radio" name="q1" id="q1-yes" value="yes">
+							<label for="q1-yes">Yes</label>
+							<input type="radio" name="q1" id="q1-sometimes" value="sometimes">
+							<label for="q1-sometimes">Sometimes</label>
+							<input type="radio" name="q1" id="q1-no" value="no">
+							<label for="q1-no">Not yet</label>
+						</div>
+					</fieldset>
+					<fieldset class="quiz__step" data-label="Finding important documents" hidden>
+						<legend tabindex="-1">Do you know where to find important business documents when needed?</legend>
+						<div class="quiz__options">
+							<input type="radio" name="q2" id="q2-yes" value="yes">
+							<label for="q2-yes">Yes</label>
+							<input type="radio" name="q2" id="q2-sometimes" value="sometimes">
+							<label for="q2-sometimes">Sometimes</label>
+							<input type="radio" name="q2" id="q2-no" value="no">
+							<label for="q2-no">Not yet</label>
+						</div>
+					</fieldset>
+					<fieldset class="quiz__step" data-label="Payments and bills" hidden>
+						<legend tabindex="-1">Do you have a routine for checking outstanding payments and bills?</legend>
+						<div class="quiz__options">
+							<input type="radio" name="q3" id="q3-yes" value="yes">
+							<label for="q3-yes">Yes</label>
+							<input type="radio" name="q3" id="q3-sometimes" value="sometimes">
+							<label for="q3-sometimes">Sometimes</label>
+							<input type="radio" name="q3" id="q3-no" value="no">
+							<label for="q3-no">Not yet</label>
+						</div>
+					</fieldset>
+					<fieldset class="quiz__step" data-label="Deadlines" hidden>
+						<legend tabindex="-1">Do you track relevant filing, renewal and payment deadlines?</legend>
+						<div class="quiz__options">
+							<input type="radio" name="q4" id="q4-yes" value="yes">
+							<label for="q4-yes">Yes</label>
+							<input type="radio" name="q4" id="q4-sometimes" value="sometimes">
+							<label for="q4-sometimes">Sometimes</label>
+							<input type="radio" name="q4" id="q4-no" value="no">
+							<label for="q4-no">Not yet</label>
+						</div>
+					</fieldset>
+					<fieldset class="quiz__step" data-label="Daily tasks and responsibilities" hidden>
+						<legend tabindex="-1">Are your daily tasks and responsibilities clear?</legend>
+						<div class="quiz__options">
+							<input type="radio" name="q5" id="q5-yes" value="yes">
+							<label for="q5-yes">Yes</label>
+							<input type="radio" name="q5" id="q5-sometimes" value="sometimes">
+							<label for="q5-sometimes">Sometimes</label>
+							<input type="radio" name="q5" id="q5-no" value="no">
+							<label for="q5-no">Not yet</label>
+						</div>
+					</fieldset>
+					<fieldset class="quiz__step" data-label="Inventory tracking" hidden>
+						<legend tabindex="-1">Do you have a consistent way to track inventory, where applicable?</legend>
+						<div class="quiz__options">
+							<input type="radio" name="q6" id="q6-yes" value="yes">
+							<label for="q6-yes">Yes</label>
+							<input type="radio" name="q6" id="q6-sometimes" value="sometimes">
+							<label for="q6-sometimes">Sometimes</label>
+							<input type="radio" name="q6" id="q6-no" value="no">
+							<label for="q6-no">Not yet</label>
+							<input type="radio" name="q6" id="q6-na" value="na">
+							<label for="q6-na">Not applicable</label>
+						</div>
+					</fieldset>
+					<fieldset class="quiz__step" data-label="File backups and access" hidden>
+						<legend tabindex="-1">Are your business files backed up and accessible to authorized people?</legend>
+						<div class="quiz__options">
+							<input type="radio" name="q7" id="q7-yes" value="yes">
+							<label for="q7-yes">Yes</label>
+							<input type="radio" name="q7" id="q7-sometimes" value="sometimes">
+							<label for="q7-sometimes">Sometimes</label>
+							<input type="radio" name="q7" id="q7-no" value="no">
+							<label for="q7-no">Not yet</label>
+						</div>
+					</fieldset>
+					<fieldset class="quiz__step" data-label="Reviewing what works" hidden>
+						<legend tabindex="-1">Do you review what is working and what needs improvement?</legend>
+						<div class="quiz__options">
+							<input type="radio" name="q8" id="q8-yes" value="yes">
+							<label for="q8-yes">Yes</label>
+							<input type="radio" name="q8" id="q8-sometimes" value="sometimes">
+							<label for="q8-sometimes">Sometimes</label>
+							<input type="radio" name="q8" id="q8-no" value="no">
+							<label for="q8-no">Not yet</label>
+						</div>
+					</fieldset>
+				</div>
+				<div class="quiz__nav">
+					<button class="cv-btn cv-btn--sm quiz__back" type="button" hidden><svg class="quiz__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg><span>Back</span></button>
+					<button class="cv-btn cv-btn--cream quiz__next" type="submit" disabled><span>Next</span><svg class="quiz__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+				</div>
+				<div class="quiz__loading" hidden>
+					<p class="quiz__loading-text">Reading your answers</p>
+					<div class="quiz__meter"><span></span></div>
+					<ul class="quiz__skeleton" aria-hidden="true"><li></li><li></li><li></li><li></li></ul>
+				</div>
+				<div class="quiz__results" hidden tabindex="-1">
+					<div class="quiz__score">
+						<svg class="quiz__ring" viewBox="0 0 120 120" aria-hidden="true">
+							<circle class="quiz__ring-track" cx="60" cy="60" r="52"/>
+							<circle class="quiz__ring-fill" cx="60" cy="60" r="52"/>
+						</svg>
+						<p class="quiz__score-num"><strong data-score>0</strong><span data-of>of 8</span></p>
+					</div>
+					<h3 class="quiz__headline"></h3>
+					<p class="quiz__lead"></p>
+					<ul class="quiz__groups"></ul>
+					<div class="quiz__actions">
+						<a class="cv-btn cv-btn--cream" href="contact.html" data-track="checkup_book_click">Book my free call</a>
+						<button class="cv-btn cv-btn--secondary" type="button" data-restart>Start again</button>
+					</div>
+					<p class="quiz__note">This check-up is a starting point for reflection, not a formal compliance assessment or audit.</p>
+				</div>
+			</form>
+		</div>
+	</section>
+
+</main>
+
+<footer class="site-footer">
+	<div class="footer-top">
+		<div class="container">
+			<div class="footer-cta">
+				<img class="footer-cta__art" src="assets/footer-graphic.svg" width="240" height="230" alt="" loading="lazy" decoding="async">
+				<div class="footer-cta__copy">
+					<h2>Ready for a clearer way forward?</h2>
+					<p>Tell us what&rsquo;s getting in the way.</p>
+					<a class="cv-btn cv-btn--cream" href="contact.html" data-track="contact_click_final">I&rsquo;m ready to talk</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="footer-main">
+		<div class="container">
+			<div class="site-footer__grid">
+				<div class="site-footer__brand">
+					<a class="logo" href="index.html" aria-label="The Claravie Support, home">
+						<img src="assets/logo.webp" width="162" height="192" alt="">
+						<span>The Claravie Support</span>
+					</a>
+					<p class="site-footer__about">Business support in Belmopan, Belize.</p>
+					<p class="tagline">Clear support. Bold progress.</p>
+				</div>
+				<nav aria-label="Company">
+					<h2>Company</h2>
+					<ul>
+						<li><a href="about.html">About</a></li>
+						<li><a href="contact.html">Contact</a></li>
+					</ul>
+				</nav>
+				<nav aria-label="Services">
+					<h2>Services</h2>
+					<ul>
+						<li><a href="packages.html">Packages</a></li>
+						<li><a href="check-up.html">Free check-up</a></li>
+					</ul>
+				</nav>
+				<div>
+					<h2>Contact</h2>
+					<address class="footer-contact">
+						<a href="tel:+5016755268" data-track="phone_tap"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A15 15 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg><span>+501-675-5268</span></a>
+						<a href="mailto:hello@claraviesupport.com"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span>hello@claraviesupport.com</span></a>
+						<p><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.2 7-11a7 7 0 0 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span>West Belmopan, Belize</span></p>
+						<p><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Mon to Fri, 9:00 am to 4:00 pm</span></p>
+					</address>
+				</div>
+			</div>
+			<div class="site-footer__base">
+				<p>&copy; 2026 The Claravie Support</p>
+				<p class="site-footer__credit">Powered by <a href="https://ctechintl.com" target="_blank" rel="noopener">Ctech International</a></p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+<script src="js/config.js"></script>
+<script src="js/main.js"></script>
+<script src="js/quiz.js"></script>
+</body>
+</html>
