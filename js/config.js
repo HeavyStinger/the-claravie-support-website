@@ -5,5 +5,6 @@ window.TCS_CONFIG = {
 	bookingUrl: "",
 	contactUrl: "contact.html",
 
-	formEndpoint: ""
+	formEndpoint: "https://api.web3forms.com/submit",
+	formAccessKey: "1f314426-0322-4f8a-b521-2052769df255"
 };

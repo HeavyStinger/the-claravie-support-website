@@ -15,7 +15,7 @@
 .contact__map { position: relative; aspect-ratio: 16 / 10; border-radius: 5px; overflow: hidden; background: var(--sage-tint); box-shadow: 0 6px 20px rgba(36, 79, 82, 0.1); }
 .contact__map iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 
-.cform, .cform__done {
+.cform, .cform__panel {
 	position: relative; overflow: hidden; padding: clamp(20px, 4vw, 36px); border-radius: 5px; color: var(--cream);
 	background:
 		radial-gradient(ellipse 90% 42% at 10% 0%, rgba(111, 179, 176, 0.42) 0%, rgba(111, 179, 176, 0) 100%),
@@ -24,17 +24,17 @@
 		linear-gradient(160deg, #1F4548 0%, #153235 100%);
 	box-shadow: inset 0 1px 0 rgba(245, 240, 232, 0.22), 0 18px 40px rgba(14, 38, 40, 0.3);
 }
-.cform::before, .cform__done::before {
+.cform::before, .cform__panel::before {
 	content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
 	background: radial-gradient(rgba(245, 240, 232, 0.6) 1px, rgba(245, 240, 232, 0) 1.6px) 0 0 / 22px 22px;
 	-webkit-mask-image: radial-gradient(circle 150px at var(--mx, -999px) var(--my, -999px), #000 0%, rgba(0, 0, 0, 0) 100%);
 	mask-image: radial-gradient(circle 150px at var(--mx, -999px) var(--my, -999px), #000 0%, rgba(0, 0, 0, 0) 100%);
 }
-.cform::after, .cform__done::after {
+.cform::after, .cform__panel::after {
 	content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
 	background: radial-gradient(circle 260px at var(--mx, -999px) var(--my, -999px), rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0) 100%);
 }
-.cform > *, .cform__done > * { position: relative; z-index: 1; }
+.cform > *, .cform__panel > * { position: relative; z-index: 1; }
 .cform { display: grid; gap: 22px; }
 .cform[hidden] { display: none; }
 .cform__fields { margin: 0; padding: 0; border: 0; min-width: 0; display: grid; gap: 20px; }
@@ -59,9 +59,6 @@
 
 .cform__trap { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 
-.cform__alert { padding: 12px 16px; border-radius: 5px; background: rgba(255, 201, 187, 0.12); border: 1.5px solid #FFC9BB; color: #FFC9BB; font-size: 15px; line-height: 1.5; font-weight: 600; }
-.cform__alert[hidden] { display: none; }
-
 .cform__actions { display: flex; }
 .cform__send { display: inline-flex; align-items: center; justify-content: center; gap: 12px; width: 100%; min-height: 48px; }
 .cform__plane { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: transform 0.2s ease; }
@@ -73,12 +70,13 @@
 	animation: cform-spin 0.7s linear infinite;
 }
 
-.cform__done { display: grid; justify-items: start; gap: 14px; }
-.cform__done[hidden] { display: none; }
-.cform__done:focus { outline: none; }
-.cform__done h3 { font-size: clamp(24px, 3vw, 32px); letter-spacing: 0.03em; }
-.cform__done h3 { color: var(--cream); }
-.cform__done p { font-size: 17px; line-height: 1.5; color: rgba(245, 240, 232, 0.75); }
+.cform__panel { display: grid; justify-items: start; align-content: center; gap: 14px; }
+.cform__panel[hidden] { display: none; }
+.cform__panel:focus { outline: none; }
+.cform__panel h3 { font-size: clamp(24px, 3vw, 32px); letter-spacing: 0.03em; color: var(--cream); }
+.cform__panel p { font-size: 17px; line-height: 1.5; color: rgba(245, 240, 232, 0.75); }
+.cform__spinner { width: 56px; height: 56px; border-radius: 50%; border: 4px solid rgba(245, 240, 232, 0.2); border-top-color: #6FB3B0; animation: cform-spin 0.8s linear infinite; }
+.cform__cross { width: 56px; height: 56px; fill: none; stroke: #FFC9BB; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
 .cform__check { width: 56px; height: 56px; fill: none; stroke: #6FB3B0; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
 .cform__check circle { stroke-dasharray: 145; stroke-dashoffset: 145; }
 .cform__check path { stroke-dasharray: 44; stroke-dashoffset: 44; }
@@ -106,6 +104,6 @@
 }
 @media (prefers-reduced-motion: reduce) {
 	.cform__plane { transition: none; }
-	.cform__send.is-loading::after { animation-duration: 1.6s; }
+	.cform__send.is-loading::after, .cform__spinner { animation-duration: 1.6s; }
 	.cform__done.is-shown .cform__check circle, .cform__done.is-shown .cform__check path { animation: none; stroke-dashoffset: 0; }
 }

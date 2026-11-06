@@ -8,12 +8,16 @@
 	var wrap = form.parentNode;
 	var fieldset = form.querySelector(".cform__fields");
 	var send = form.querySelector(".cform__send");
-	var alertBox = form.querySelector(".cform__alert");
+	var loadingPanel = wrap.querySelector(".cform__loading");
+	var errorPanel = wrap.querySelector(".cform__error");
+	var errorText = errorPanel.querySelector("[data-error-text]");
 	var done = wrap.querySelector(".cform__done");
+	var panels = { form: form, loading: loadingPanel, error: errorPanel, done: done };
 	var country = document.getElementById("cf-country");
 	var honeypot = document.getElementById("cf-company");
 	var emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 	var loading = false;
+	var lockedHeight = 0;
 
 	var fields = {
 		name: { input: document.getElementById("cf-name"), validate: checkName },
@@ -98,14 +102,18 @@
 		if (fields.phone.input.value.trim() || fields.phone.input.getAttribute("aria-invalid")) validate("phone");
 	});
 
-	function showAlert(text) {
-		alertBox.textContent = text;
-		alertBox.hidden = false;
+	function show(name, height) {
+		Object.keys(panels).forEach(function (key) {
+			panels[key].hidden = key !== name;
+			if (key !== "form") panels[key].style.minHeight = name === key && height ? height + "px" : "";
+		});
 	}
 
-	function hideAlert() {
-		alertBox.textContent = "";
-		alertBox.hidden = true;
+	function enter(el) {
+		if (el.animate && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+			el.animate([{ opacity: 0, transform: "translateY(10px)" }, { opacity: 1, transform: "translateY(0)" }], { duration: 320, easing: "cubic-bezier(0.22, 0.8, 0.3, 1)" });
+		}
+		el.focus({ preventScroll: true });
 	}
 
 	function setLoading(on) {
@@ -135,31 +143,45 @@
 	}
 
 	function deliver(data) {
-		if (!cfg.formEndpoint) return Promise.reject(new Error("not-configured"));
+		if (!cfg.formEndpoint || !cfg.formAccessKey) return Promise.reject(new Error("not-configured"));
 		return fetch(cfg.formEndpoint, {
+			signal: typeof AbortSignal.timeout === "function" ? AbortSignal.timeout(20000) : undefined,
 			method: "POST",
 			headers: { "Content-Type": "application/json", "Accept": "application/json" },
-			body: JSON.stringify(data)
+			body: JSON.stringify({
+				access_key: cfg.formAccessKey,
+				subject: "New message from the website",
+				from_name: "The Claravie Support website",
+				name: data.name,
+				email: data.email,
+				phone: data.phone,
+				message: data.message
+			})
 		}).then(function (res) {
-			if (!res.ok) throw new Error("http-" + res.status);
+			return res.json().catch(function () { return {}; }).then(function (body) {
+				if (!res.ok || !body.success) throw new Error("rejected");
+			});
 		});
 	}
 
 	function showDone() {
-		form.hidden = true;
-		done.hidden = false;
+		show("done", lockedHeight);
 		done.classList.add("is-shown");
-		if (done.animate && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-			done.animate([{ opacity: 0, transform: "translateY(10px)" }, { opacity: 1, transform: "translateY(0)" }], { duration: 320, easing: "cubic-bezier(0.22, 0.8, 0.3, 1)" });
-		}
-		done.focus({ preventScroll: true });
+		enter(done);
 		if (window.tcsTrack) window.tcsTrack("contact_form_sent");
+	}
+
+	function showFailure(err) {
+		errorText.textContent = err && err.message === "not-configured"
+			? "This form is not connected yet. Please email hello@claraviesupport.com or call +501-675-5268."
+			: "Your message could not be sent. Please try again, or email hello@claraviesupport.com.";
+		show("error", lockedHeight);
+		enter(errorPanel);
 	}
 
 	form.addEventListener("submit", function (e) {
 		e.preventDefault();
 		if (loading) return;
-		hideAlert();
 
 		var firstBad = null;
 		order.forEach(function (key) {
@@ -169,33 +191,36 @@
 			firstBad.focus();
 			return;
 		}
+		lockedHeight = form.offsetHeight;
 		if (honeypot.value) return showDone();
 
 		setLoading(true);
+		show("loading", lockedHeight);
+		enter(loadingPanel);
 		deliver(payload()).then(function () {
 			setLoading(false);
 			showDone();
 		}, function (err) {
 			setLoading(false);
-			showAlert(err && err.message === "not-configured"
-				? "This form is not connected yet. Please email hello@claraviesupport.com or call +501-675-5268."
-				: "Your message could not be sent. Please try again, or email hello@claraviesupport.com.");
-			send.focus();
+			showFailure(err);
 		});
 	});
 
 	if (window.tcsGlow) {
 		window.tcsGlow(form);
-		window.tcsGlow(done);
+		Object.keys(panels).forEach(function (key) { if (key !== "form") window.tcsGlow(panels[key]); });
 	}
+
+	errorPanel.querySelector("[data-retry]").addEventListener("click", function () {
+		show("form");
+		send.focus();
+	});
 
 	done.querySelector("[data-again]").addEventListener("click", function () {
 		form.reset();
 		order.forEach(function (key) { setError(key, ""); });
-		hideAlert();
-		done.hidden = true;
 		done.classList.remove("is-shown");
-		form.hidden = false;
+		show("form");
 		fields.name.input.focus();
 	});
 })();

@@ -170,13 +170,22 @@
 						</div>
 					</fieldset>
 
-					<p class="cform__alert" role="alert" hidden></p>
-
 					<div class="cform__actions">
 						<button class="cv-btn cv-btn--cream cform__send" type="submit"><span>Send</span><svg class="cform__plane" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4z"/></svg></button>
 					</div>
 				</form>
-				<div class="cform__done" hidden tabindex="-1">
+				<div class="cform__panel cform__loading" role="status" aria-live="polite" hidden tabindex="-1">
+					<span class="cform__spinner" aria-hidden="true"></span>
+					<h3>Sending your message</h3>
+					<p>Please wait a moment.</p>
+				</div>
+				<div class="cform__panel cform__error" role="alert" hidden tabindex="-1">
+					<svg class="cform__cross" viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="23"/><path d="M26 15v14M26 36v1"/></svg>
+					<h3>Message not sent</h3>
+					<p data-error-text></p>
+					<button class="cv-btn cv-btn--cream cv-btn--sm" type="button" data-retry>Try again</button>
+				</div>
+				<div class="cform__panel cform__done" hidden tabindex="-1">
 					<svg class="cform__check" viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="23"/><path d="M15 27l8 8 14-16"/></svg>
 					<h3>Message sent</h3>
 					<p>Thank you. We will be in touch soon.</p>
