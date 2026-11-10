@@ -1,5 +1,8 @@
 .why__grid { display: grid; gap: 28px; align-items: center; }
 .why__img { display: block; width: 100%; height: auto; border-radius: 5px; }
+.why__img--photo { aspect-ratio: 5 / 4; object-fit: cover; }
+.why__img--owner { object-position: 38% 30%; }
+.why__img--experience { object-position: 58% 50%; }
 .why__copy { display: grid; gap: 16px; justify-items: start; }
 .why__copy h2 { max-width: 18ch; }
 .why__copy .cv-btn { margin-top: 6px; }
