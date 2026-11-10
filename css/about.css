@@ -50,7 +50,9 @@
 .who__scroller::-webkit-scrollbar { display: none; }
 .who__scroller:focus-visible { outline-offset: -3px; }
 .biz { position: relative; flex: 0 0 min(72vw, 280px); margin: 0; aspect-ratio: 4 / 5; overflow: hidden; border-radius: 5px; scroll-snap-align: start; background: var(--sage); }
-.biz img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.biz img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: var(--pos, 50% 50%); }
+.biz--logo { background: #fff; }
+.biz--logo img { inset: 10% 10% 34%; width: 80%; height: 56%; object-fit: contain; }
 .biz::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(22, 52, 55, 0.94) 0%, rgba(22, 52, 55, 0.7) 28%, rgba(22, 52, 55, 0) 62%); }
 .biz figcaption { position: absolute; z-index: 1; left: 18px; right: 18px; bottom: 18px; display: grid; gap: 4px; color: var(--cream); }
 .biz strong { font: 500 18px/1.2 var(--font-display); letter-spacing: 0.08em; text-transform: uppercase; }

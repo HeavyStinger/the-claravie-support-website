@@ -6,46 +6,82 @@
 		var buttons = section.querySelectorAll(".who__btn");
 		if (!scroller || !buttons.length) return;
 
-		function step() {
-			var card = scroller.querySelector(".biz");
-			if (!card) return scroller.clientWidth;
-			var gap = parseFloat(getComputedStyle(scroller).columnGap) || 0;
-			return card.getBoundingClientRect().width + gap;
+		var reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+		var originals = [].slice.call(scroller.querySelectorAll(".biz"));
+		var origin = 0;
+		var setWidth = 0;
+		var settleTimer = null;
+
+		function copy(card) {
+			var c = card.cloneNode(true);
+			c.setAttribute("aria-hidden", "true");
+			return c;
 		}
 
-		function update() {
-			var max = scroller.scrollWidth - scroller.clientWidth - 2;
-			buttons.forEach(function (b) {
-				var dir = Number(b.getAttribute("data-dir"));
-				b.disabled = dir < 0 ? scroller.scrollLeft <= 2 : scroller.scrollLeft >= max;
-			});
+		var after = originals.map(copy);
+		originals.map(copy).forEach(function (c) { scroller.insertBefore(c, originals[0]); });
+		after.forEach(function (c) { scroller.appendChild(c); });
+
+		function left(card) {
+			return card.getBoundingClientRect().left - scroller.getBoundingClientRect().left + scroller.scrollLeft;
+		}
+
+		function measure() {
+			var pad = parseFloat(getComputedStyle(scroller).paddingLeft) || 0;
+			origin = left(originals[0]) - pad;
+			setWidth = left(after[0]) - left(originals[0]);
+		}
+
+		function jump(to) {
+			scroller.style.scrollSnapType = "none";
+			scroller.scrollLeft = to;
+			void scroller.offsetWidth;
+			requestAnimationFrame(function () { scroller.style.scrollSnapType = ""; });
+		}
+
+		function normalize() {
+			var s = scroller.scrollLeft;
+			if (s >= origin + setWidth - 1) jump(s - setWidth);
+			else if (s < origin - 1) jump(s + setWidth);
+		}
+
+		function step() {
+			var gap = parseFloat(getComputedStyle(scroller).columnGap) || 0;
+			return originals[0].getBoundingClientRect().width + gap;
+		}
+
+		function move(dir) {
+			scroller.scrollBy({ left: dir * step(), behavior: reduce.matches ? "auto" : "smooth" });
 		}
 
 		buttons.forEach(function (b) {
-			b.addEventListener("click", function () {
-				var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-				scroller.scrollBy({ left: Number(b.getAttribute("data-dir")) * step(), behavior: reduce ? "auto" : "smooth" });
-			});
+			b.addEventListener("click", function () { move(Number(b.getAttribute("data-dir"))); });
 		});
 
-		scroller.addEventListener("scroll", update, { passive: true });
-		window.addEventListener("resize", update);
-		update();
+		if ("onscrollend" in window) {
+			scroller.addEventListener("scrollend", normalize);
+		} else {
+			scroller.addEventListener("scroll", function () {
+				clearTimeout(settleTimer);
+				settleTimer = setTimeout(normalize, 120);
+			}, { passive: true });
+		}
 
-		var reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+		window.addEventListener("resize", function () {
+			measure();
+			jump(origin);
+		});
+
+		measure();
+		jump(origin);
+
 		var delay = 3200;
 		var timer = null;
 		var held = false;
 
-		function advance() {
-			var max = scroller.scrollWidth - scroller.clientWidth - 2;
-			if (scroller.scrollLeft >= max) scroller.scrollTo({ left: 0, behavior: "smooth" });
-			else scroller.scrollBy({ left: step(), behavior: "smooth" });
-		}
-
 		function start() {
 			if (timer || held || reduce.matches || document.hidden) return;
-			timer = setInterval(advance, delay);
+			timer = setInterval(function () { move(1); }, delay);
 		}
 
 		function stop() {
