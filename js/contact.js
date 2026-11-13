@@ -173,8 +173,8 @@
 
 	function showFailure(err) {
 		errorText.textContent = err && err.message === "not-configured"
-			? "This form is not connected yet. Please email hello@claraviesupport.com or call +501-602-5268."
-			: "Your message could not be sent. Please try again, or email hello@claraviesupport.com.";
+			? "This form is not connected yet. Please email theclaravies@gmail.com or call +501-602-5268."
+			: "Your message could not be sent. Please try again, or email theclaravies@gmail.com.";
 		show("error", lockedHeight);
 		enter(errorPanel);
 	}
