@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://claraviesupport.com/sitemap.xml
